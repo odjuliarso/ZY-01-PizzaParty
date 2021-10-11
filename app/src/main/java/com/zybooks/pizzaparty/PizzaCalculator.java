@@ -6,18 +6,15 @@ public class PizzaCalculator {
         LIGHT, MEDIUM, RAVENOUS
     }
 
-    public enum  PizzaSize {  // not sure if needed, may delete later
+    public enum  PizzaSize {
         SMALL, MEDIUM, LARGE
     }
 
-    public final static int SLICES_PER_PIZZA = 8;
-//    public final static int SMALL_PIZZA_SLICES = 6; // not sure if these three constants are needed, may delete later
-//    public final static int MEDIUM_PIZZA_SLICES = 8;
-//    public final static int LARGE_PIZZA_SLICES = 12;
+    // public final static int SLICES_PER_PIZZA = 8;
 
     private HungerLevel mHungerLevel;
     private int mPartySize;
-    private PizzaSize mPizzaSize; // may delete later
+    private PizzaSize mPizzaSize;
 
     public PizzaCalculator(int partySize, HungerLevel level, PizzaSize size) {
         setHungerLevel(level);
@@ -40,14 +37,16 @@ public class PizzaCalculator {
             mPartySize = partySize;
         }
     }
-/// * continue here to set assign the slices per pizza selection using get and set method * ///
+/// * continue here to assign the slices per pizza selection using get and set method * ///
     public PizzaSize getPizzaSize() { return mPizzaSize; }
-    public void setSlicesPerPizza(PizzaSize size) { mPizzaSize = size; }
+    public void setSlicesPerPizza(PizzaSize size) {
+        mPizzaSize = size;
+    }
 ///
 
     public int getTotalPizzas() {
         int slicesPerPerson;
-        int pizzaSize = 0;
+        int pizzaSlices;
         if (mHungerLevel == HungerLevel.LIGHT) {
             slicesPerPerson = 2;
         }
@@ -59,16 +58,16 @@ public class PizzaCalculator {
         }
 
         if (mPizzaSize == PizzaSize.SMALL) {
-            pizzaSize = 6;
+            pizzaSlices = 6;
         }
         else if (mPizzaSize == PizzaSize.MEDIUM) {
-            pizzaSize = 8;
+            pizzaSlices = 8;
         }
-        else if (mPizzaSize == PizzaSize.LARGE) {
-            pizzaSize = 12;
+        else {
+            pizzaSlices = 12;
         }
 
-//        return (int) Math.ceil(mPartySize * slicesPerPerson / (double) SLICES_PER_PIZZA);
-        return (int) Math.ceil(mPartySize * slicesPerPerson / (double) pizzaSize);
+        return (int) Math.ceil(mPartySize * slicesPerPerson / pizzaSlices);
+//      return (int) Math.ceil(mPartySize * slicesPerPerson / (double) SLICES_PER_PIZZA);
     }
 }
