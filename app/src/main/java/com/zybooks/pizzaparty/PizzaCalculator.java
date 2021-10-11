@@ -67,7 +67,7 @@ public class PizzaCalculator {
             pizzaSlices = 12;
         }
 
-        return (int) Math.ceil(mPartySize * slicesPerPerson / pizzaSlices);
+        return (int) Math.ceil(mPartySize * slicesPerPerson / (double) pizzaSlices);
 //      return (int) Math.ceil(mPartySize * slicesPerPerson / (double) SLICES_PER_PIZZA);
     }
 }
