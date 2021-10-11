@@ -52,8 +52,18 @@ public class MainActivity extends AppCompatActivity {
             hungerLevel = PizzaCalculator.HungerLevel.MEDIUM;
         }
 
+        // Get the pizza size selection ///
+        int checkedSizeId = mSizeOfPizzaRadioGroup.getCheckedRadioButtonId();
+        PizzaCalculator.PizzaSize pizzaSize = PizzaCalculator.PizzaSize.LARGE;
+        if (checkedSizeId == R.id.small_radioButton) {
+            pizzaSize = PizzaCalculator.PizzaSize.SMALL;
+        }
+        else if (checkedSizeId == R.id.medium_radioButton) {
+            pizzaSize = PizzaCalculator.PizzaSize.MEDIUM;
+        }
+
         // Get the number of pizzas needed
-        PizzaCalculator calc = new PizzaCalculator(numAttend, hungerLevel);
+        PizzaCalculator calc = new PizzaCalculator(numAttend, hungerLevel, pizzaSize);
         int totalPizzas = calc.getTotalPizzas();
 
         // Place totalPizzas into the string resource and display
